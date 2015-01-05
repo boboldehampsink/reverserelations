@@ -1,0 +1,10 @@
+{% import "_includes/forms" as forms %}
+
+{{ forms.selectField({
+    label: "Target Field"|t,
+    instructions: "Set the target field of this relation."|t,
+    id: 'targetField',
+    name: 'targetField',
+    options: fields,
+    value: targetField
+})}}
