@@ -23,5 +23,4 @@ class ReverseRelationsPlugin extends BasePlugin
     {
         return 'http://www.itmundi.nl';
     }
-
 }
