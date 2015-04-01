@@ -16,5 +16,8 @@ The plugin's folder should be named "reverserelations"
 
 Changelog
 =================
+###0.2###
+- Only find reverse relations in given source
+
 ###0.1###
 - Initial push to GitHub
