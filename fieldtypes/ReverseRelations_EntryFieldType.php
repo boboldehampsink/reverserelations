@@ -52,7 +52,15 @@ class ReverseRelations_EntryFieldType extends BaseElementFieldType
         // Get parent criteria
         $criteria = parent::prepValue($value);
 
+        // Get sources
+        $sources = array();
+        foreach ($this->getSettings()->sources as $source) {
+            list($type, $id) = explode(':', $source);
+            $sources[] = $id;
+        }
+
         // Reverse the criteria
+        $criteria->sectionId = $sources;
         $criteria->relatedTo = array(
             'targetElement' => $this->element,
             'field' => $this->getSettings()->targetField,
