@@ -1,9 +1,9 @@
 <?php
+
 namespace Craft;
 
 class ReverseRelationsPlugin extends BasePlugin
 {
-
     public function getName()
     {
         return Craft::t('Reverse Relations');

@@ -1,9 +1,9 @@
 <?php
+
 namespace Craft;
 
 class ReverseRelations_EntryFieldType extends BaseElementFieldType
 {
-
     // Element Type Entry
     protected $elementType = 'Entry';
 
