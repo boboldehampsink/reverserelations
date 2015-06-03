@@ -96,6 +96,31 @@ class ReverseRelations_EntryFieldType extends BaseElementFieldType
     }
 
     /**
+     * Save relations on the other side.
+     */
+    public function onAfterElementSave()
+    {
+        // Get target field handle
+        $targetField = $this->getSettings()->targetField;
+
+        // Get target ids
+        $targetIds = $this->element->getContent()->getAttribute($this->model->handle);
+
+        // Loop through targets
+        foreach ($targetIds as $targetId) {
+
+            // Get target
+            $target = craft()->entries->getEntryById($targetId);
+
+            // Set this element on that entry
+            $target->getContent()->{$targetField} = array_merge($target->{$targetField}->ids(), array($this->element->id));
+
+            // Save target
+            craft()->entries->saveEntry($target);
+        }
+    }
+
+    /**
      * Set input html.
      *
      * @param string $name
