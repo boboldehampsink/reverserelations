@@ -1,10 +1,10 @@
 Reverse Relations plugin for Craft CMS
 =================
 
-Plugin that allows you to show reverse relations in both the CP and the Site.
+Plugin that allows you to show and save reverse relations in both the CP and the Site.
 
 Features:
-- Able to output the relation in the CP and in the Site (no other plugin has this feature)
+- Able to output the relation in the CP and in the site (no other plugin has this feature)
 - Only supports entries at the moment
 
 Todo:
@@ -17,6 +17,7 @@ Changelog
 =================
 ###0.3###
 - Added the ability to save both ways
+- Added Craft 2.4 support
 
 ###0.2###
 - Only find reverse relations in given source
