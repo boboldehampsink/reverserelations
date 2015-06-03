@@ -18,6 +18,7 @@ Changelog
 ###0.3###
 - Added the ability to save both ways
 - Added Craft 2.4 support
+- Added MIT license
 
 ###0.2###
 - Only find reverse relations in given source
