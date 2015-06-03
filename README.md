@@ -8,7 +8,6 @@ Features:
 - Only supports entries at the moment
 
 Todo:
-- Save both ways
 - Support more element types
 
 Important:
@@ -16,6 +15,9 @@ The plugin's folder should be named "reverserelations"
 
 Changelog
 =================
+###0.3###
+- Added the ability to save both ways
+
 ###0.2###
 - Only find reverse relations in given source
 
