@@ -115,7 +115,7 @@ class ReverseRelations_EntryFieldType extends BaseElementFieldType
         $variables = $this->getInputTemplateVariables($name, $criteria);
 
         // Return input template
-        return craft()->templates->render('reverserelations/_field', $variables);
+        return craft()->templates->render($this->inputTemplate, $variables);
     }
 
     /**
