@@ -40,16 +40,6 @@ class ReverseRelations_EntryFieldType extends BaseElementFieldType
     }
 
     /**
-     * Set button label.
-     *
-     * @return string
-     */
-    protected function getAddButtonLabel()
-    {
-        return Craft::t('Add an entry');
-    }
-
-    /**
      * Set settings html.
      *
      * @return string
@@ -136,8 +126,7 @@ class ReverseRelations_EntryFieldType extends BaseElementFieldType
     protected function defineSettings()
     {
         // Default settings
-        $settings['sources'] = AttributeType::Mixed;
-        $settings['targetLocale'] = AttributeType::String;
+        $settings = parent::defineSettings();
 
         // Target field setting
         $settings['targetField'] = AttributeType::String;
