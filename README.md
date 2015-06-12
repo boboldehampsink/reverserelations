@@ -15,6 +15,9 @@ The plugin's folder should be named "reverserelations"
 
 Changelog
 =================
+###0.3.1###
+- Make sure we have targets before trying to save any
+
 ###0.3###
 - Added the ability to save both ways
 - Added Craft 2.4 support
