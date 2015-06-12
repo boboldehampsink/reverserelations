@@ -106,17 +106,21 @@ class ReverseRelations_EntryFieldType extends BaseElementFieldType
         // Get target ids
         $targetIds = $this->element->getContent()->getAttribute($this->model->handle);
 
-        // Loop through targets
-        foreach ($targetIds as $targetId) {
+        // Make sure we have targets
+        if ($targetIds) {
 
-            // Get target
-            $target = craft()->entries->getEntryById($targetId);
+            // Loop through targets
+            foreach ($targetIds as $targetId) {
 
-            // Set this element on that entry
-            $target->getContent()->{$targetField} = array_merge($target->{$targetField}->ids(), array($this->element->id));
+                // Get target
+                $target = craft()->entries->getEntryById($targetId);
 
-            // Save target
-            craft()->entries->saveEntry($target);
+                // Set this element on that entry
+                $target->getContent()->{$targetField} = array_merge($target->{$targetField}->ids(), array($this->element->id));
+
+                // Save target
+                craft()->entries->saveEntry($target);
+            }
         }
     }
 
