@@ -6,5 +6,13 @@
     id: 'targetField',
     name: 'targetField',
     options: fields,
-    value: targetField
+    value: settings.targetField
+})}}
+
+{{ forms.lightswitchField({
+    label: "Read-only"|t,
+    instructions: "Disallow adding or removing of relations."|t,
+    id: 'readOnly',
+    name: 'readOnly',
+    on: settings.readOnly
 })}}

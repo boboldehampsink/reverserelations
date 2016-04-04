@@ -1,0 +1,6 @@
+{% include '_includes/forms/elementSelect' %}
+{% if readOnly|default(false) %}
+	{% includejs %}
+		$('#{{ id|namespaceInputId }}').find('.add, .delete').remove();
+	{% endincludejs %}
+{% endif %}
