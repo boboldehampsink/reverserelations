@@ -30,11 +30,11 @@ class ReverseRelations_EntryFieldType extends BaseElementFieldType
     protected $allowLimit = false;
 
     /**
-     * Whether the elements have a custom sort order.
-     *
-     * @var bool $sortable
-     */
-    protected $sortable = false;
+	 * Whether the elements have a custom sort order.
+	 *
+	 * @var bool $sortable
+	 */
+	protected $sortable = false;
 
     /**
      * Reverse Entry Relations name.
@@ -173,9 +173,7 @@ class ReverseRelations_EntryFieldType extends BaseElementFieldType
         $variables = $this->getInputTemplateVariables($name, $criteria);
 
         // Disable adding if we can't save a reverse relation
-        if (!$this->canSaveReverseRelation($this->getSettings()->targetField) || $this->getSettings()->readOnly) {
-            $variables['readOnly'] = true;
-        }
+        $variables['readOnly'] = $this->getSettings()->readOnly || !$this->canSaveReverseRelation($this->getSettings()->targetField);
 
         // Return input template (local override if exists)
         $template = 'reverserelations/' . $this->inputTemplate;
