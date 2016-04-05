@@ -47,18 +47,6 @@ class ReverseRelations_EntryFieldType extends BaseElementFieldType
     }
 
     /**
-     * @inheritDoc IPreviewableFieldType::getTableAttributeHtml()
-     *
-     * @param mixed $value
-     *
-     * @return string
-     */
-    public function getTableAttributeHtml($value)
-    {
-        return implode(',', $value);
-    }
-
-    /**
      * Set settings html.
      *
      * @return string
