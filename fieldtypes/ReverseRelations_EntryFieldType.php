@@ -30,6 +30,13 @@ class ReverseRelations_EntryFieldType extends BaseElementFieldType
     protected $allowLimit = false;
 
     /**
+     * Whether the elements have a custom sort order.
+     *
+     * @var bool $sortable
+     */
+    protected $sortable = false;
+
+    /**
      * Reverse Entry Relations name.
      *
      * @return string
