@@ -15,6 +15,10 @@ The plugin's folder should be named "reverserelations"
 
 Changelog
 =================
+###0.4.0###
+- Added a read-only setting (thanks to @timkelty)
+- Fixed Matrix errors (thanks to @timkelty)
+
 ###0.3.1###
 - Make sure we have targets before trying to save any
 
