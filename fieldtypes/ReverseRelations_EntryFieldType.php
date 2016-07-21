@@ -65,7 +65,7 @@ class ReverseRelations_EntryFieldType extends BaseElementFieldType
         // Add "field" select template
         $fieldSelectTemplate = craft()->templates->render('reverserelations/_settings', array(
             'fields' => $fields,
-            'targetField' => $this->getSettings()->targetField,
+            'settings' => $this->getSettings(),
         ));
 
         // Return both
@@ -86,13 +86,18 @@ class ReverseRelations_EntryFieldType extends BaseElementFieldType
 
         // Get sources
         $sources = array();
-        foreach ($this->getSettings()->sources as $source) {
-            list($type, $id) = explode(':', $source);
-            $sources[] = $id;
+        if (is_array($this->getSettings()->sources)) {
+            foreach ($this->getSettings()->sources as $source) {
+                list($type, $id) = explode(':', $source);
+                $sources[] = $id;
+            }
         }
 
         // Reverse the criteria
-        $criteria->sectionId = $sources;
+        if (count($sources)) {
+            $criteria->sectionId = $sources;
+        }
+
         $criteria->relatedTo = array(
             'targetElement' => $this->element,
             'field' => $this->getSettings()->targetField,
@@ -107,8 +112,13 @@ class ReverseRelations_EntryFieldType extends BaseElementFieldType
      */
     public function onAfterElementSave()
     {
-        // Get target field handle
+        // Get target field handle and fieldtype
         $targetField = $this->getSettings()->targetField;
+        $fieldType = craft()->fields->getFieldByHandle($targetField)->fieldType;
+
+        if ($fieldType instanceof MatrixFieldType) {
+            return false;
+        }
 
         // Get target ids
         $targetIds = $this->element->getContent()->getAttribute($this->model->handle);
@@ -150,8 +160,14 @@ class ReverseRelations_EntryFieldType extends BaseElementFieldType
         // Get variables
         $variables = $this->getInputTemplateVariables($name, $criteria);
 
-        // Return input template
-        return craft()->templates->render($this->inputTemplate, $variables);
+        // Disable adding if we can't save a reverse relation
+        $variables['readOnly'] = $this->getSettings()->readOnly || !$this->canSaveReverseRelation($this->getSettings()->targetField);
+
+        // Return input template (local override if exists)
+        $template = 'reverserelations/' . $this->inputTemplate;
+        $template = craft()->templates->doesTemplateExist($template) ? $template : $this->inputTemplate;
+
+        return craft()->templates->render($template, $variables);
     }
 
     /**
@@ -167,7 +183,26 @@ class ReverseRelations_EntryFieldType extends BaseElementFieldType
         // Target field setting
         $settings['targetField'] = AttributeType::String;
 
+        // Read-only setting
+        $settings['readOnly'] = AttributeType::Bool;
+
         // Return settings
         return $settings;
+    }
+
+    /**
+     * Determine if a field can save a reverse relatoin
+     *
+     * @return bool
+     */
+    private function canSaveReverseRelation($fieldHandle)
+    {
+        $fieldType = craft()->fields->getFieldByHandle($fieldHandle)->fieldType;
+
+        if ($fieldType instanceof MatrixFieldType) {
+            return false;
+        }
+
+        return true;
     }
 }
