@@ -189,7 +189,7 @@ class ReverseRelations_UserFieldType extends BaseElementFieldType
         $newTargetIds = $this->element->getContent()->getAttribute($this->model->handle);
 
         // Make sure we have new targets
-        if ($newTargetIds) {
+        if (is_array($newTargetIds)) {
 
             // Loop through targets
             foreach ($newTargetIds as $targetId) {
