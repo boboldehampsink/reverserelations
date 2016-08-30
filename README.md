@@ -5,7 +5,7 @@ Plugin that allows you to show and save reverse relations in both the CP and the
 
 Features:
 - Able to output the relation in the CP and in the site (no other plugin has this feature)
-- Only supports entries at the moment
+- Only supports entries and users at the moment
 
 Todo:
 - Support more element types
