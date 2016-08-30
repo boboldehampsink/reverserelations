@@ -88,7 +88,7 @@ class ReverseRelationsService extends BaseApplicationComponent
         $target->getContent()->{$targetField} = $fieldIds;
 
         // Save target element
-        craft()->{$elementType[0]}->saveUser($target);
+        craft()->{$elementType[0]}->{'save'.$elementType[1]}($target);
       }
     }
   }
