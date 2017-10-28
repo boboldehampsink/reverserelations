@@ -1,34 +1,29 @@
-Reverse Relations plugin for Craft CMS
+Reverse Relations plugin for Craft
 =================
 
-Plugin that allows you to show and save reverse relations in both the CP and the Site.
+Plugin that allows you to show and save reverse relations in both the CP and the site.
 
-Features:
+## Requirements
+
+This plugin requires Craft CMS 3.0.0-beta.28 or later.
+
+## Installation
+
+To install the plugin, follow these instructions.
+
+1. Open your terminal and go to your Craft project:
+
+        cd /path/to/project
+
+2. Then tell Composer to load the plugin:
+
+        composer require boboldehampsink/reverserelations
+
+3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Reverse Relations.
+
+##Features:
 - Able to output the relation in the CP and in the site (no other plugin has this feature)
 - Only supports entries at the moment
 
-Todo:
+##Todo:
 - Support more element types
-
-Important:
-The plugin's folder should be named "reverserelations"
-
-Changelog
-=================
-###0.4.0###
-- Added a read-only setting (thanks to @timkelty)
-- Fixed Matrix errors (thanks to @timkelty)
-
-###0.3.1###
-- Make sure we have targets before trying to save any
-
-###0.3###
-- Added the ability to save both ways
-- Added Craft 2.4 support
-- Added MIT license
-
-###0.2###
-- Only find reverse relations in given source
-
-###0.1###
-- Initial push to GitHub

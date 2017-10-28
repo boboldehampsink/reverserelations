@@ -1,8 +1,8 @@
 {% import "_includes/forms" as forms %}
 
 {{ forms.selectField({
-    label: "Target Field"|t,
-    instructions: "Set the target field of this relation."|t,
+    label: "Target Field"|t("reverserelations"),
+    instructions: "Set the target field of this relation."|t("reverserelations"),
     id: 'targetField',
     name: 'targetField',
     options: fields,
@@ -10,8 +10,8 @@
 })}}
 
 {{ forms.lightswitchField({
-    label: "Read-only"|t,
-    instructions: "Disallow adding or removing of relations."|t,
+    label: "Read-only"|t("reverserelations"),
+    instructions: "Disallow adding or removing of relations."|t("reverserelations"),
     id: 'readOnly',
     name: 'readOnly',
     on: settings.readOnly

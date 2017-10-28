@@ -1,14 +1,39 @@
 {
     "name": "boboldehampsink/reverserelations",
-    "description": "Reverse Relations Plugin for Craft CMS",
+    "description": "Reverse Relations Plugin for Craft.",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "fieldtype",
+        "entries"
+    ],
+    "support": {
+        "docs": "https://github.com/boboldehampsink/reverserelations/blob/master/README.md",
+        "issues": "https://github.com/boboldehampsink/reverserelations/issues"
+    },
     "authors": [
 		{
 			"name": "Bob Olde Hampsink",
-			"email": "b.oldehampsink@itmundi.nl"
+			"email": "b.oldehampsink@itmundi.nl",
+            "homepage": "http://github.com/boboldehampsink"
 		}
 	],
+    "license": "MIT",
     "type": "craft-plugin",
     "require": {
-        "composer/installers": "~1.0"
+        "craftcms/cms": "^3.0.0-beta.28"
+    },
+    "autoload": {
+      "psr-4": {
+        "BobOldeHampsink\\ReverseRelations\\": "src/"
+      }
+    },
+    "extra": {
+      "name": "Reverse Relations",
+      "handle": "reverserelations",
+      "changelogUrl": "https://raw.githubusercontent.com/boboldehampsink/reverserelations/master/CHANGELOG.md"
     }
 }

@@ -1,5 +1,5 @@
 {% if readOnly and elements|length < 1 %}
-	<p>{{ 'No related entries exist yet.'|t }}</p>
+	<p>{{ 'No related entries exist yet.'|t("reverserelations") }}</p>
 {% else %}
 	{% include '_includes/forms/elementSelect' %}
 {% endif %}
