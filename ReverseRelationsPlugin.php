@@ -54,4 +54,28 @@ class ReverseRelationsPlugin extends BasePlugin
     {
         return 'http://github.com/boboldehampsink';
     }
+
+    /**
+     * Listen for element saves, fire off our service if ReverseRelations fieldtype.
+     */
+    public function init()
+    {
+        craft()->on('elements.onBeforeSaveElement', function(Event $event)
+        {
+            // $event gives us POST(post-populated) data
+            // Let's find pre-populated data
+            $eventElement = $event->params['element'];
+            $element = craft()->elements->getElementById($eventElement->id);
+
+            // If we've found an element
+            if ($element) {
+                foreach ($element->fieldLayout->fields as $field) {
+                    // Make sure this is a ReverseRelations field
+                    if ( ($field->field->type == 'ReverseRelations_User') || ($field->field->type == 'ReverseRelations_Entry') ) {
+                        craft()->reverseRelations->onBeforeSaveElement($field->field->handle, $element);
+                    }
+                }
+            }
+        });
+    }
 }

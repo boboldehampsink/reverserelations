@@ -3,9 +3,9 @@
 namespace Craft;
 
 /**
- * Reverse Relations Entry Fieldtype.
+ * Reverse Relations User Fieldtype.
  *
- * Fieldtype that allows you to show reverse relations for entries.
+ * Fieldtype that allows you to show reverse relations for users.
  *
  * @author    Bob Olde Hampsink <b.oldehampsink@itmundi.nl>
  * @copyright Copyright (c) 2015, Bob Olde Hampsink
@@ -13,14 +13,14 @@ namespace Craft;
  *
  * @link      http://github.com/boboldehampsink
  */
-class ReverseRelations_EntryFieldType extends BaseElementFieldType
+class ReverseRelations_UserFieldType extends BaseElementFieldType
 {
     /**
-     * Element Type Entry.
+     * Element Type User.
      *
      * @var string
      */
-    protected $elementType = ElementType::Entry;
+    protected $elementType = ElementType::User;
 
     /**
      * Dont allow a limit to be set.
@@ -37,13 +37,13 @@ class ReverseRelations_EntryFieldType extends BaseElementFieldType
     protected $sortable = false;
 
     /**
-     * Reverse Entry Relations name.
+     * Reverse User Relations name.
      *
      * @return string
      */
     public function getName()
     {
-        return Craft::t('Reverse Entry Relations');
+        return Craft::t('Reverse User Relations');
     }
 
     /**
@@ -95,7 +95,7 @@ class ReverseRelations_EntryFieldType extends BaseElementFieldType
 
         // Reverse the criteria
         if (count($sources)) {
-            $criteria->sectionId = $sources;
+            $criteria->groupId = $sources;
         }
 
         $criteria->relatedTo = array(
@@ -112,13 +112,13 @@ class ReverseRelations_EntryFieldType extends BaseElementFieldType
      */
     public function onAfterElementSave()
     {
-        // Get new Entry ids in source field
+        // Get new User ids in source field
         $newSourceIds = $this->element->getContent()->getAttribute($this->model->handle);
 
         // Get target field handle
         $targetField = $this->getSettings()->targetField;
 
-        $elementType = ['entries', 'Entry'];
+        $elementType = ['users', 'User'];
         craft()->reverseRelations->addToTarget($this, $targetField, $newSourceIds, $elementType);
     }
 
